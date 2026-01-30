@@ -1,0 +1,45 @@
+<mat-card class="task-card" [class.completed]="task().status === 'done'">
+    <mat-card-content>
+        <div class="task-header">
+            <span class="task-title">{{ task().title }}</span>
+
+            <div class="priority-wrapper">
+
+                <span class="priority-tag" [ngClass]="task().priority">
+                    {{ task().priority | titlecase }}
+                </span>
+
+                <button mat-icon-button [matMenuTriggerFor]="priorityMenu" class="edit-priority-btn">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+            </div>
+        </div>
+
+        <mat-menu #priorityMenu="matMenu" class="priority-selection-menu">
+            @for (p of priorities; track p) {
+            <button mat-menu-item (click)="onPrioritySelect(p)">
+                <mat-icon [ngClass]="p">flag</mat-icon>
+                <span>{{ p | titlecase }}</span>
+            </button>
+            }
+        </mat-menu>
+
+        <p class="task-description">
+            {{ task().description }}
+        </p>
+
+        <div class="task-actions">
+            <span class="task-id">#{{ task().id }}</span>
+            <div class="action-buttons">
+                <button mat-icon-button class="comment-btn" (click)="openComments.emit(task().id)"
+                    matTooltip="Comments">
+                    <mat-icon>chat_bubble_outline</mat-icon>
+                </button>
+                <button mat-icon-button class="delete-btn" (click)="onDeleteClick()" matTooltip="Delete Task">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

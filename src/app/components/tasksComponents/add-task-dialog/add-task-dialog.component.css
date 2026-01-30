@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dialog-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #f0f2f5;
+  padding-bottom: 16px;
+}
+
+.dialog-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1f36;
+  margin: 0;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+::ng-deep .mat-mdc-form-field {
+  --mdc-filled-textField-container-color: #f8fafc;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  border-radius: 8px !important;
+}
+
+mat-option[value="high"] { color: #dc2626; font-weight: 500; }
+mat-option[value="normal"] { color: #f59e0b; font-weight: 500; }
+mat-option[value="low"] { color: #10b981; font-weight: 500; }
+
+.dialog-actions {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f2f5;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-cancel {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.btn-submit {
+  padding: 0 24px;
+  font-weight: 500;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1), 0 2px 4px -1px rgba(79, 70, 229, 0.06);
+}
+
+mat-error {
+  font-size: 0.75rem;
+  font-weight: 500;
+}

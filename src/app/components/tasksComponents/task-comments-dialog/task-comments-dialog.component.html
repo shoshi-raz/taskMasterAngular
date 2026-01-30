@@ -1,0 +1,50 @@
+<div mat-dialog-title class="dialog-header">
+  <h2>Comments</h2>
+  <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="comments-container">
+  @if (commentsService.isLoading()) {
+    <div class="loader">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  } @else {
+    <div class="comments-list">
+      @for (comment of comments(); track comment.id) {
+        <div class="comment-row">
+          <div class="author-avatar">
+            {{ comment.author_name?.charAt(0) || 'U' }}
+          </div>
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="author-name">{{ comment.author_name }}</span>
+              <span class="comment-date">{{ comment.created_at | date:'MMM d, HH:mm' }}</span>
+            </div>
+            <div class="comment-body">
+              {{ comment.body }}
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <mat-icon>chat_bubble_outline</mat-icon>
+          <p>No comments yet. Start the conversation!</p>
+        </div>
+      }
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions class="comment-input-area">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Add a comment...</mat-label>
+    <textarea matInput [(ngModel)]="newCommentBody" rows="2"></textarea>
+    <button mat-icon-button matSuffix color="primary" (click)="sendComment()" [disabled]="!newCommentBody.trim()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-form-field>
+</mat-dialog-actions>

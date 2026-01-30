@@ -1,0 +1,21 @@
+<mat-card class="project-card">
+  <div class="card-header">
+    <mat-icon class="project-icon">assignment</mat-icon>
+    <div class="title-section">
+      <h3>{{ project().name | titlecase }}</h3>
+      <span class="date">Created: {{ project().created_at | date:'shortDate' }}</span>
+    </div>
+  </div>
+
+  <div class="description">
+    {{ project().description || 'No description provided' }}
+  </div>
+
+  <div class="card-actions">
+    <span class="status-badge">Active</span>
+    <button mat-button color="primary" (click)="goToTasks()">
+      Full Details
+      <mat-icon iconPositionEnd>open_in_new</mat-icon>
+    </button>
+  </div>
+</mat-card>

@@ -1,0 +1,35 @@
+<div class="page-layout">
+  <header class="dashboard-header">
+    <div class="title-group">
+      <h1>Global Task Board</h1>
+      <p class="text-secondary">Manage and track tasks across all your team projects</p>
+    </div>
+
+    <div class="actions-group">
+      <mat-form-field appearance="outline" class="dense-filter">
+        <mat-label>Select project</mat-label>
+        <mat-icon matPrefix>inventory_2</mat-icon>
+        <mat-select (selectionChange)="onProjectFilterChange($event.value)" [value]="null">
+          <mat-option [value]="null">
+            <span class="all-teams-label">All Projects</span>
+          </mat-option>
+          <mat-divider></mat-divider>
+          @for (project of projectService.allProjects(); track project.id) {
+            <mat-option [value]="project.id">{{ project.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      
+      <button mat-fab extended color="primary" class="add-task-btn" (click)="openAddTaskDialog()">
+        <mat-icon>add</mat-icon>
+        New Task
+      </button>
+    </div>
+  </header>
+
+  <mat-divider class="header-divider"></mat-divider>
+
+  <main class="board-container">
+    <app-task-board [projectId]="selectedProjectId()"></app-task-board>
+  </main>
+</div>

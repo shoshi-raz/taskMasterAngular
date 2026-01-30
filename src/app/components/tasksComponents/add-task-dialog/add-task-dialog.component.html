@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Add New Task</h2>
+
+<mat-dialog-content class="dialog-container">
+  <form [formGroup]="taskForm">
+
+    @if (!data?.projectId) {
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Project</mat-label>
+      <mat-select formControlName="projectId">
+        @for (project of projectsService.allProjects(); track project.id) {
+        <mat-option [value]="project.id">{{ project.name }}</mat-option>
+        }
+      </mat-select>
+      @if (taskForm.get('projectId')?.hasError('required') && taskForm.get('projectId')?.touched) {
+      <mat-error>Please select a project</mat-error>
+      } </mat-form-field>
+    }
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Task Title</mat-label>
+      <input matInput formControlName="title" placeholder="What needs to be done?">
+      @if (taskForm.get('title')?.hasError('required')) {
+      <mat-error>Title is required</mat-error>
+      } </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+
+    <div style="display: flex; gap: 10px;">
+      <mat-form-field style="flex: 1;" appearance="outline">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option value="low">Low</mat-option>
+          <mat-option value="normal">normal</mat-option>
+          <mat-option value="high">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="flex: 1;" appearance="outline">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="actions">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" [disabled]="taskForm.invalid" (click)="onSubmit()">
+    Create Task
+  </button>
+</mat-dialog-actions>

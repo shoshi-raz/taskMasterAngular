@@ -1,0 +1,34 @@
+<mat-card class="column">
+    <div class="color-bar" [ngClass]="status()"></div>
+  <mat-card-header class="column-header">
+    <mat-card-title>{{ title() }} ({{ tasks().length }})</mat-card-title>
+    <span class="spacer"></span>
+    <button mat-mini-fab (click)="addTaskClicked.emit(status())" color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content 
+    cdkDropList 
+    [cdkDropListData]="tasks()" 
+    (cdkDropListDropped)="onDrop($event)" 
+    
+    class="task-list">
+    
+    @for(task of tasks(); track task.id){
+      <div cdkDrag [cdkDragData]="task">
+        <app-task-item 
+        [task]="task"
+        (delete)="taskDeleted.emit($event)"
+        (priorityChanged)="priorityChanged.emit($event)"
+        (openComments)="openTaskComments.emit($event)"
+        ></app-task-item>
+      </div>
+    }@empty{
+      <div class="empty-column-placeholder">
+        <mat-icon>inbox</mat-icon>
+        <p>No tasks here</p>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>

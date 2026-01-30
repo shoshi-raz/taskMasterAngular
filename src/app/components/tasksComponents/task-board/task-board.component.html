@@ -1,0 +1,45 @@
+@if(projectId()){
+    <app-page-navigate 
+      [breadcrumbs]="breadcrumbs()" 
+      [isLoading]="taskService.isLoading()" 
+      (refresh)="taskService.refreshTasks(projectId())">
+    </app-page-navigate>}
+
+<div class="board-container" cdkDropListGroup>
+
+     <app-tasks-column-board
+          title="Backlog"
+         [tasks]="backlogTasks()"
+         [status]="TaskStatus.BACKLOG"
+         (dropped)="drop($event, TaskStatus.BACKLOG)"
+         (addTaskClicked)="addTask($event)"
+         (taskDeleted)="onDeleteTask($event)"
+         (priorityChanged)="onPriorityChanged($event)"
+         (openTaskComments)="onOpenComments($event)">
+     </app-tasks-column-board>
+
+
+    <app-tasks-column-board
+    title="In Progress" 
+      [status]="TaskStatus.IN_PROGRESS" 
+      [tasks]="inProgressTasks()"
+      (dropped)="drop($event, TaskStatus.IN_PROGRESS)"
+      (addTaskClicked)="addTask($event)"
+      (taskDeleted)="onDeleteTask($event)"
+      (priorityChanged)="onPriorityChanged($event)"
+       (openTaskComments)="onOpenComments($event)">
+
+    </app-tasks-column-board>
+
+  <app-tasks-column-board
+    title="Done" 
+    [status]="TaskStatus.DONE" 
+    [tasks]="doneTasks()"
+    (dropped)="drop($event, TaskStatus.DONE)"
+    (addTaskClicked)="addTask($event)"
+    (taskDeleted)="onDeleteTask($event)"
+    (priorityChanged)="onPriorityChanged($event)"
+    (openTaskComments)="onOpenComments($event)">
+  </app-tasks-column-board>
+
+</div>

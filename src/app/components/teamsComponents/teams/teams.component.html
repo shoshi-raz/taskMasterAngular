@@ -1,0 +1,46 @@
+    <app-page-navigate 
+        [breadcrumbs]="breadcrumbs()" 
+        [isLoading]="teamsService.isLoading()"
+        (refresh)="teamsService.refreshTeams()">
+    </app-page-navigate>
+    
+<div class="teams-container">
+
+    <header class="page-header">
+        <div class="title-group">
+            <h1>My Teams</h1>
+            <p class="subtitle">Select a team to manage projects and members</p>
+        </div>
+
+        <div class="actions">
+            <button mat-raised-button color="primary" (click)="openCreateDialog()">
+                <mat-icon>add</mat-icon>
+                NEW TEAM
+            </button>
+
+        </div>
+    </header>
+
+    @if (teamsService.isLoading()) {
+    <div class="loading-shade">
+        <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    }
+
+    <div class="teams-grid">
+        @for (team of teamsService.teams(); track team.id) {
+        <app-team-card [team]="team" (select)="onTeamClick($event)" (addMemberClick)="openAddMemberDialog($event)"
+            (viewProject)="onViewTeamProject($event)" />
+        }
+        @empty {
+        @if (!teamsService.isLoading()) {
+        <div class="empty-state">
+            <mat-icon>group_off</mat-icon>
+            <h3>No teams found</h3>
+            <p>Start by creating your first team to manage projects.</p>
+            <button mat-stroked-button color="primary" (click)="openCreateDialog()">Create Team</button>
+        </div>
+        }
+        }
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Create New Team</h2>
+
+<mat-dialog-content>
+  <p class="description">Give your team a name to get started. You can add members later.</p>
+  
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Team Name</mat-label>
+    <input 
+      matInput 
+      [(ngModel)]="teamName" 
+      placeholder="e.g. Development Team" 
+      cdkFocusInitial
+      (keyup.enter)="teamName.trim() ? onCreate() : null">
+    <mat-hint>Choose something descriptive</mat-hint>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button 
+    mat-raised-button 
+    color="primary" 
+    [mat-dialog-close]="teamName.trim()" 
+    [disabled]="!teamName.trim()">
+    Create Team
+  </button>
+</mat-dialog-actions>

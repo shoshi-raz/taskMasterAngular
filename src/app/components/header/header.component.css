@@ -1,0 +1,44 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  position: sticky; 
+  top: 0;
+  z-index: 1000;
+  padding: 0 32px;      
+  box-sizing: border-box;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  outline: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  margin: 0 15px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.active-link {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+button {
+  margin-left: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

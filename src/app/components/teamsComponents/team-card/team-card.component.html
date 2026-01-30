@@ -1,0 +1,33 @@
+<mat-card class="team-card" (click)="onCardClick()">
+    <mat-card-header>
+        <div mat-card-avatar class="team-avatar">
+            {{ team().name[0] | uppercase }}
+        </div>
+        <mat-card-title>{{ team().name }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div class="team-stats">
+            <div class="stat">
+                <mat-icon>groups</mat-icon>
+                <span>{{ team().members_count || 1 }} Members</span>
+            </div>
+            <div class="stat">
+                <mat-icon>event</mat-icon>
+                <span>{{ team().created_at | date:'shortDate' }}</span>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        <button mat-icon-button color="accent"
+            (click)="onAddMember($event)"
+             matTooltip="Add Member">
+            <mat-icon>person_add</mat-icon>
+        </button>
+        <button mat-button color="primary"
+        (click)="onViewProject($event)"
+        >
+        VIEW PROJECTS</button>
+    </mat-card-actions>
+</mat-card>

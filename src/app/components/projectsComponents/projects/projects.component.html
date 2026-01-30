@@ -1,0 +1,33 @@
+
+  <app-page-navigate [breadcrumbs]="breadcrumbs()" [isLoading]="projectsService.isLoading()"
+    (refresh)="projectsService.refreshProjects()">
+    ></app-page-navigate>
+
+<div class="projects-container">
+@if (teamId()) {
+  <div class="projects-header">
+    <h2>Projects for Team #{{ teamId() }}</h2>
+    <button mat-flat-button color="primary" (click)="onCreateProject()">
+      <mat-icon>add</mat-icon>
+      New Project
+    </button>
+
+  </div>
+
+  <div class="project-grid">
+    @for(project of projectsService.projectsByTeam(); track project.id) {
+    <app-project-card [project]="project" [teamId]="teamId()"></app-project-card>
+    } @empty {
+    <div class="empty-state">
+      <mat-icon>folder_open</mat-icon>
+      <p>No projects found for this team.</p>
+    </div>
+    }
+  </div>
+}
+ @else {
+  <div class="loading-state centered">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading...</p>
+  </div>
+}
