@@ -17,6 +17,8 @@ import { Breadcrumb } from '../../../models/navigation.model';
 import { map } from 'rxjs/internal/operators/map';
 import { ActivatedRoute } from '@angular/router';
 import { PageNavigateComponent } from '../../page-navigate/page-navigate.component';
+import { ProjectsService } from '../../../services/projects.service';
+import { TeamsService } from '../../../services/teams.service';
 
 @Component({
   selector: 'app-task-board',
@@ -38,6 +40,8 @@ export class TaskBoardComponent {
   projectId = input.required<number | null>();
 
   protected taskService = inject(TasksService);
+  protected projectService = inject(ProjectsService);
+  protected teamService = inject(TeamsService);
   private dialog = inject(MatDialog);
   private route = inject(ActivatedRoute);
 
@@ -70,7 +74,7 @@ export class TaskBoardComponent {
         this.taskService.loadTasks(id).subscribe();
         this.taskService.setFilter(id);
       }
-      else{
+      else {
         this.taskService.setFilter(null);
       }
     });
@@ -114,12 +118,12 @@ export class TaskBoardComponent {
     })
   }
 
-  readonly breadcrumbs = computed<Breadcrumb[]>(() => [
-  { label: 'Teams', url: '/teams' },
-  { label: `Team #${this.teamId()}`, url: `/teams/${this.teamId()}/projects` },
-  { label: `Project #${this.projectId()}` } 
-]);
-
+  readonly breadcrumbs = computed<Breadcrumb[]>(() => 
+     [{ label: 'Teams', url: '/teams' },
+    { label: `Team #${this.teamId()}`, url: `/teams/${this.teamId()}/projects` },
+    { label: `Project #${this.projectId()}` }
+    ]
+ );
 }
 
 

@@ -3,14 +3,12 @@
   flex-direction: row;
   gap: 24px;
   padding: 24px;
-  justify-content: flex-start;
-  height: calc(100vh - 80px);
-  background-color: #f4f7f9;
-  overflow-x: auto;
+  justify-content: center; 
+  height: calc(100vh - 80px);  
+  overflow-x: auto; 
   overflow-y: hidden;
   align-items: stretch;
 }
-
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 12px;

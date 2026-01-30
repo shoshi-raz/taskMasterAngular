@@ -15,6 +15,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ProjectsService } from '../../../services/projects.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
+import { PageNavigateComponent } from "../../page-navigate/page-navigate.component";
 
 @Component({
   selector: 'app-tasks',
@@ -27,7 +28,8 @@ import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.compo
     MatIconModule,
     MatButtonModule,
     MatSelectModule,
-  ],
+    PageNavigateComponent
+],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
@@ -66,4 +68,10 @@ export class TasksComponent {
   private saveTask(taskData: any) {
     this.tasksService.createTask(taskData).subscribe();
   }
+
+  breadcrumbs= computed(() => {
+    return [
+      { label: 'Tasks', url: `/tasks` }
+    ] 
+  })
 }

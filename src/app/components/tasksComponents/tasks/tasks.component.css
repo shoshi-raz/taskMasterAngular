@@ -1,77 +1,93 @@
-/* קונטיינר ראשי */
 .page-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f4f7f9;
 }
 
-/* הדר מעוצב */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  background-color: white;
+  padding: 30px 48px;
 }
 
 .title-group h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
-  color: #1a202c;
-  letter-spacing: -0.5px;
+  color: #0f172a;
+  letter-spacing: -1px;
 }
 
 .text-secondary {
-  margin: 4px 0 0;
-  color: #718096;
+  margin: 6px 0 0;
   font-size: 15px;
+  font-weight: 400;
 }
 
-/* קבוצת כפתורים וסינון */
 .actions-group {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
 }
 
 /* עיצוב ה-Select */
-.dense-filter {
-  width: 280px;
+.custom-select {
+  width: 260px;
+  margin-bottom: -1.25em; /* תיקון הריווח של Material */
 }
 
-/* תיקון ויזואלי ל-Material Outline כדי שיהיה עדין יותר */
-::ng-deep .dense-filter .mat-mdc-text-field-wrapper {
-  background-color: #f8fafc !important;
-  border-radius: 10px !important;
+::ng-deep .custom-select .mat-mdc-text-field-wrapper {
+  background-color: #f9f1f6 !important;
+  border-radius: 14px !important;
+  transition: all 0.2s ease;
 }
 
-::ng-deep .dense-filter .mat-mdc-form-field-flex {
-  height: 52px !important;
-  align-items: center !important;
+::ng-deep .custom-select.mat-focused .mat-mdc-text-field-wrapper {
+  background-color: white !important;
+  box-shadow: 0 0 0 2px #b53f76;
+}
+
+::ng-deep .custom-select .mdc-notched-outline__leading,
+::ng-deep .custom-select .mdc-notched-outline__notch,
+::ng-deep .custom-select .mdc-notched-outline__trailing {
+  border: none !important; /* העלמת המסגרת המקורית של Material */
+}
+
+::ng-deep .custom-select .mat-mdc-form-field-flex {
+  height: 54px !important;
+  padding: 0 16px !important;
+}
+
+::ng-deep .custom-select .mat-mdc-select-arrow svg {
+  color: #64748b !important;
 }
 
 .all-teams-label {
-  font-weight: 700;
-  color: #3f51b5;
+  font-weight: 600;
 }
 
-/* כפתור הוספת משימה */
+/* כפתור הוספה */
 .add-task-btn {
-  height: 52px !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 14px rgba(63, 81, 181, 0.25) !important;
-  font-weight: 600 !important;
+  height: 54px !important;
+  padding: 0 24px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, #e21a78 0%, #e993ba 100%) !important;
+  box-shadow: 0 10px 15px -3px rgba(41, 4, 21, 0.3) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.add-task-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(115, 121, 155, 0.4) !important;
 }
 
 .header-divider {
   margin: 0;
-  opacity: 0.1;
+  border-top-color: #e2e8f0;
 }
 
-/* אזור הלוח */
 .board-container {
   flex: 1;
-  overflow: hidden; /* הגלילה תנוהל בתוך הלוח עצמו */
+  padding-top: 20px;
 }

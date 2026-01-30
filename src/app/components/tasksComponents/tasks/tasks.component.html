@@ -1,3 +1,10 @@
+
+<app-page-navigate 
+    [breadcrumbs]="breadcrumbs()" 
+    [isLoading]="tasksService.isLoading()" 
+    (refresh)="tasksService.refreshTasks(selectedProjectId())"
+    />
+
 <div class="page-layout">
   <header class="dashboard-header">
     <div class="title-group">
@@ -6,10 +13,9 @@
     </div>
 
     <div class="actions-group">
-      <mat-form-field appearance="outline" class="dense-filter">
-        <mat-label>Select project</mat-label>
+      <mat-form-field appearance="outline" class="custom-select">
         <mat-icon matPrefix>inventory_2</mat-icon>
-        <mat-select (selectionChange)="onProjectFilterChange($event.value)" [value]="null">
+        <mat-select (selectionChange)="onProjectFilterChange($event.value)" [value]="null" placeholder="Select project">
           <mat-option [value]="null">
             <span class="all-teams-label">All Projects</span>
           </mat-option>

@@ -83,11 +83,8 @@ export class ProjectsComponent {
     })
   }
 
-  readonly breadcrumbs = computed<Breadcrumb[]>(() => {
-    const t = this.team();
-    return [
-      { label: 'Teams', url: '/teams' },
-      { label: t?.name|| `Team #${this.teamId()}` }
-    ]
-  });
+  readonly breadcrumbs = computed<Breadcrumb[]>(() => [
+    { label: 'Teams', url: '/teams' },
+    { label: this.team()?.name || `Team #${this.teamId()}` }
+  ]);
 }

@@ -32,7 +32,6 @@
           },
           "configurations": {
             "production": {
-              
               "budgets": [
                 {
                   "type": "initial",
@@ -94,7 +93,7 @@
       }
     }
   },
- "schematics": {
+  "schematics": {
     "@schematics/angular:component": {
       "type": "component",
       "skipTests": false
