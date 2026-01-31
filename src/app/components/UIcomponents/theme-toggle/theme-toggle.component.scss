@@ -1,0 +1,77 @@
+// ==========================================
+// 🌓 THEME TOGGLE STYLES
+// ==========================================
+
+@import 'variables';
+
+.theme-toggle-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-full;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: var(--bg-surface-hover);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .toggle-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    transition: all $transition-base;
+  }
+
+  // Sun Icon (appears in dark mode)
+  .sun-icon {
+    color: #ffd54f;
+    animation: rotate 20s linear infinite;
+
+    &:hover {
+      color: #ffeb3b;
+    }
+  }
+
+  // Moon Icon (appears in light mode)
+  .moon-icon {
+    color: #5c6bc0;
+
+    &:hover {
+      color: #3f51b5;
+    }
+  }
+}
+
+// Rotation animation for sun
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Dark theme specific overrides
+:host-context(.dark-theme) {
+  .theme-toggle-btn {
+    .sun-icon {
+      animation: none; // Stop rotation in dark mode, add pulse instead
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

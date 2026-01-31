@@ -34,7 +34,7 @@ import { TeamsService } from '../../../services/teams.service';
     PageNavigateComponent
   ],
   templateUrl: './task-board.component.html',
-  styleUrl: './task-board.component.css',
+  styleUrl: './task-board.component.scss',
 })
 export class TaskBoardComponent {
   projectId = input.required<number | null>();

@@ -1,29 +1,49 @@
-<h2 mat-dialog-title>Create New Project</h2>
-<mat-dialog-content>
-    <form [formGroup]="projectForm" class="create-form">
-        <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Project Name</mat-label>
-            <input matInput formControlName="name" placeholder="e.g. Marketing Launch">
-            @if(projectForm.get('name')?.hasError('required')){
-            <mat-error>Name is required</mat-error>
-            }
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Description</mat-label>
-            <textarea matInput formControlName="description" placeholder="Describe the project goals"
-                rows="4"></textarea>
-            @if (projectForm.get('description')?.hasError('required')) {
-            <mat-error>Description is required</mat-error>
-            }
-        </mat-form-field>
-
-    </form>
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-    <button mat-button (click)="onCancel()">Cancel</button>
-    <button mat-flat-button color="primary" [disabled]="projectForm.invalid" (click)="onSubmit()">
-        CREATE PROJECT
+<div class="dialog-wrapper">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Create New Project</h2>
+    <button mat-icon-button (click)="onCancel()" aria-label="Close dialog" matTooltip="Close">
+      <mat-icon>close</mat-icon>
     </button>
-</mat-dialog-actions>
+  </div>
+
+  <mat-dialog-content>
+    <form [formGroup]="projectForm" class="create-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Project Name</mat-label>
+        <input 
+          matInput 
+          formControlName="name" 
+          placeholder="e.g. Marketing Launch"
+          cdkFocusInitial
+          matTooltip="Give your project a clear name">
+        @if(projectForm.get('name')?.hasError('required') && projectForm.get('name')?.touched) {
+          <mat-error>Name is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea 
+          matInput 
+          formControlName="description" 
+          placeholder="Describe the project goals"
+          rows="4"></textarea>
+        @if (projectForm.get('description')?.hasError('required') && projectForm.get('description')?.touched) {
+          <mat-error>Description is required</mat-error>
+        }
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()" matTooltip="Cancel">Cancel</button>
+    <button 
+      mat-flat-button 
+      color="primary" 
+      [disabled]="projectForm.invalid" 
+      (click)="onSubmit()"
+      matTooltip="Create New Project">
+      CREATE PROJECT
+    </button>
+  </mat-dialog-actions>
+</div>

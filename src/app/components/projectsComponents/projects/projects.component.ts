@@ -28,7 +28,7 @@ import { MatProgressSpinner } from "@angular/material/progress-spinner";
     MatProgressSpinner
   ],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.css',
+  styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent {
   teamId = input.required<string>();
@@ -58,7 +58,7 @@ export class ProjectsComponent {
 
   onCreateProject(): void {
     const dialogRef = this.dialog.open(CreateProjectDialogComponent, {
-      width: '450px',
+      width: '500px',
       disableClose: true,
     });
 

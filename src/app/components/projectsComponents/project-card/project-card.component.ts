@@ -9,7 +9,7 @@ import { TasksComponent } from '../../tasksComponents/tasks/tasks.component';
 import { Router } from '@angular/router';
 import { TasksService } from '../../../services/tasks.service';
 import { TaskStatus } from '../../../models/task.model';
-import { MatDivider } from "@angular/material/divider";
+import { MatDivider, MatDividerModule } from "@angular/material/divider";
 
 @Component({
   selector: 'app-project-card',
@@ -20,10 +20,9 @@ import { MatDivider } from "@angular/material/divider";
     MatChipsModule,
     DatePipe,
     TitleCasePipe,
-    MatDivider
-],
+    MatDividerModule],
   templateUrl: './project-card.component.html',
-  styleUrl: './project-card.component.css',
+  styleUrl: './project-card.component.scss',
 })
 export class ProjectCardComponent {
 

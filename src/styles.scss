@@ -1,0 +1,445 @@
+// ==========================================
+// 🎨 TASKMASTER - MAIN STYLES
+// ==========================================
+
+@use '@angular/material' as mat;
+@import 'variables';
+@import 'dark-theme';
+
+// ==========================================
+// ANGULAR MATERIAL THEME CONFIGURATION
+// ==========================================
+
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$rose-palette,
+      tertiary: mat.$violet-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+// ==========================================
+// ROOT CSS VARIABLES (Light Mode Default)
+// ==========================================
+
+:root {
+  // Colors
+  --primary-color: #{$primary-500};
+  --primary-dark: #{$primary-700};
+  --accent-color: #{$accent-500};
+  --accent-dark: #{$accent-700};
+
+  // Backgrounds
+  --bg-primary: #{$bg-light};
+  --bg-surface: #{$surface-light};
+  --bg-surface-hover: #{$surface-hover-light};
+  --bg-surface-elevated: #{$gray-50};
+
+  // Text Colors
+  --text-primary: #{$text-primary-light};
+  --text-secondary: #{$text-secondary-light};
+  --text-disabled: #{$text-disabled-light};
+
+  // Status Colors
+  --status-low: #{$status-low};
+  --status-normal: #{$status-normal};
+  --status-high: #{$status-high};
+  --status-active: #{$status-active};
+
+  // Shadows
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+
+  // Spacing
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+  --spacing-xxl: #{$spacing-xxl};
+
+  // Border Radius
+  --radius-sm: #{$border-radius-sm};
+  --radius-md: #{$border-radius-md};
+  --radius-lg: #{$border-radius-lg};
+  --radius-xl: #{$border-radius-xl};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+}
+
+// ==========================================
+// GLOBAL STYLES
+// ==========================================
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color $transition-base, color $transition-base;
+}
+
+// ==========================================
+// TYPOGRAPHY
+// ==========================================
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: var(--text-primary);
+}
+
+h1 { font-size: $font-size-xxxl; }
+h2 { font-size: $font-size-xxl; }
+h3 { font-size: $font-size-xl; }
+h4 { font-size: $font-size-lg; }
+h5 { font-size: $font-size-base; }
+h6 { font-size: $font-size-sm; }
+
+p {
+  margin: 0 0 $spacing-md 0;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+  }
+}
+
+// ==========================================
+// UTILITY CLASSES
+// ==========================================
+
+// Spacing Utilities
+.mt-xs { margin-top: $spacing-xs !important; }
+.mt-sm { margin-top: $spacing-sm !important; }
+.mt-md { margin-top: $spacing-md !important; }
+.mt-lg { margin-top: $spacing-lg !important; }
+.mt-xl { margin-top: $spacing-xl !important; }
+
+.mb-xs { margin-bottom: $spacing-xs !important; }
+.mb-sm { margin-bottom: $spacing-sm !important; }
+.mb-md { margin-bottom: $spacing-md !important; }
+.mb-lg { margin-bottom: $spacing-lg !important; }
+.mb-xl { margin-bottom: $spacing-xl !important; }
+
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+.p-xs { padding: $spacing-xs !important; }
+.p-sm { padding: $spacing-sm !important; }
+.p-md { padding: $spacing-md !important; }
+.p-lg { padding: $spacing-lg !important; }
+.p-xl { padding: $spacing-xl !important; }
+
+// Text Utilities
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+
+.text-primary { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-disabled { color: var(--text-disabled) !important; }
+
+.font-weight-light { font-weight: $font-weight-light !important; }
+.font-weight-regular { font-weight: $font-weight-regular !important; }
+.font-weight-medium { font-weight: $font-weight-medium !important; }
+.font-weight-semibold { font-weight: $font-weight-semibold !important; }
+.font-weight-bold { font-weight: $font-weight-bold !important; }
+
+// Display Utilities
+.d-flex { display: flex !important; }
+.d-block { display: block !important; }
+.d-inline-block { display: inline-block !important; }
+.d-none { display: none !important; }
+
+// Flex Utilities
+.flex-row { flex-direction: row !important; }
+.flex-column { flex-direction: column !important; }
+.justify-start { justify-content: flex-start !important; }
+.justify-center { justify-content: center !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-end { justify-content: flex-end !important; }
+.align-start { align-items: flex-start !important; }
+.align-center { align-items: center !important; }
+.align-end { align-items: flex-end !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.gap-sm { gap: $spacing-sm !important; }
+.gap-md { gap: $spacing-md !important; }
+.gap-lg { gap: $spacing-lg !important; }
+
+// Width Utilities
+.w-100 { width: 100% !important; }
+.w-50 { width: 50% !important; }
+.w-auto { width: auto !important; }
+
+// ==========================================
+// REUSABLE COMPONENTS
+// ==========================================
+
+// Cards
+.card {
+  background-color: var(--bg-surface);
+  border-radius: $card-border-radius;
+  padding: $card-padding;
+  box-shadow: var(--shadow-md);
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  &-header {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-md;
+    color: var(--text-primary);
+  }
+
+  &-body {
+    color: var(--text-secondary);
+  }
+
+  &-footer {
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 1px solid var(--text-disabled);
+  }
+}
+
+// Status Badges
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $badge-padding;
+  border-radius: $badge-border-radius;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all $transition-fast;
+
+  &.low-priority {
+    background-color: rgba($status-low, 0.1);
+    color: darken($status-low, 10%);
+  }
+
+  &.normal-priority {
+    background-color: rgba($status-normal, 0.1);
+    color: darken($status-normal, 10%);
+  }
+
+  &.high-priority {
+    background-color: rgba($status-high, 0.1);
+    color: darken($status-high, 10%);
+  }
+
+  &.active-status {
+    background-color: rgba($status-active, 0.1);
+    color: darken($status-active, 10%);
+  }
+}
+
+// Buttons (Enhanced)
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: 0 $button-padding-x;
+  height: $button-height;
+  border: none;
+  border-radius: $button-border-radius;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &-primary {
+    background-color: var(--primary-color);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--primary-dark);
+    }
+  }
+
+  &-accent {
+    background-color: var(--accent-color);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--accent-dark);
+    }
+  }
+
+  &-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+
+    &:hover:not(:disabled) {
+      background-color: var(--primary-color);
+      color: white;
+    }
+  }
+
+  &-sm {
+    height: $button-height-sm;
+    padding: 0 $button-padding-x-sm;
+    font-size: $font-size-sm;
+  }
+
+  &-lg {
+    height: $button-height-lg;
+    font-size: $font-size-lg;
+  }
+
+  &-icon {
+    width: $button-height;
+    height: $button-height;
+    padding: 0;
+    border-radius: $border-radius-full;
+  }
+}
+
+// Empty States
+.empty-state {
+  text-align: center;
+  padding: $spacing-xxl;
+  color: var(--text-secondary);
+
+  .empty-icon {
+    font-size: 64px;
+    margin-bottom: $spacing-lg;
+    opacity: 0.3;
+  }
+
+  .empty-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-sm;
+    color: var(--text-primary);
+  }
+
+  .empty-text {
+    font-size: $font-size-base;
+  }
+}
+
+// Loading Spinner
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+}
+
+// ==========================================
+// SCROLLBAR STYLING
+// ==========================================
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-disabled);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--text-secondary);
+  }
+}
+
+// ==========================================
+// ANIMATIONS
+// ==========================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn $transition-base;
+}
+
+.slide-up {
+  animation: slideUp $transition-base;
+}
+
+// ==========================================
+// RESPONSIVE UTILITIES
+// ==========================================
+
+@media (max-width: $breakpoint-md) {
+  body {
+    font-size: $font-size-sm;
+  }
+
+  h1 { font-size: $font-size-xxl; }
+  h2 { font-size: $font-size-xl; }
+  h3 { font-size: $font-size-lg; }
+}

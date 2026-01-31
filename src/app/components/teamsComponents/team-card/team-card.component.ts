@@ -18,7 +18,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule
   ],
   templateUrl: './team-card.component.html',
-  styleUrl: './team-card.component.css',
+  styleUrl: './team-card.component.scss',
 })
 export class TeamCardComponent {
   team = input.required<Team>();

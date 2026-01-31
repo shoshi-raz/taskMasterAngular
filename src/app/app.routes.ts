@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/authComponents/login/login.component';
 import { authGuard, guestGuard } from './guards/auth.guard';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './components/authComponents/register/register.component';
 import { TeamsComponent } from './components/teamsComponents/teams/teams.component';
 import { ProjectsComponent } from './components/projectsComponents/projects/projects.component';
 import { TaskBoardComponent } from './components/tasksComponents/task-board/task-board.component';

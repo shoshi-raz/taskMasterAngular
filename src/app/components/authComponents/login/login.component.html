@@ -1,0 +1,76 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Welcome Back</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email Address</mat-label>
+          <input 
+            matInput 
+            type="email" 
+            formControlName="email" 
+            placeholder="your.email@example.com"
+            cdkFocusInitial
+            matTooltip="Enter your registered email address">
+          
+          @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+            <mat-error>Email is required</mat-error>
+          }
+          @if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched) {
+            <mat-error>Invalid email address</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input 
+            matInput 
+            type="password" 
+            formControlName="password"
+            placeholder="Enter your password"
+            matTooltip="Your secure password">
+          
+          @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+            <mat-error>Password is required</mat-error>
+          }
+          @if (loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched) {
+            <mat-error>Minimum 6 characters</mat-error>
+          }
+        </mat-form-field>
+
+        @if (errorMessage) {
+          <p class="error-msg">
+            <mat-icon inline>error_outline</mat-icon>
+            {{ errorMessage }}
+          </p>
+        }
+
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit" 
+          [disabled]="loginForm.invalid || isLoading"
+          class="full-width"
+          matTooltip="Login to your account">
+          
+          @if (isLoading) {
+            <mat-spinner diameter="20" class="spinner"></mat-spinner>
+            <span>Logging in...</span>
+          } @else {
+            <mat-icon>login</mat-icon>
+            <span>  Login</span>
+          }
+        </button>
+
+        <div class="login-link">
+          Don't have an account? 
+          <a routerLink="/register" matTooltip="Create a new account">Register here</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

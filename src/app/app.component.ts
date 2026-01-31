@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import { ThemeService } from './components/UIcomponents/theme-toggle/theme.service';
 
 
 @Component({
@@ -10,5 +11,6 @@ import { HeaderComponent } from './components/header/header.component';
     styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'tasksProject';
+  private themeService = inject(ThemeService);
+  ngOnInit() {}
 }

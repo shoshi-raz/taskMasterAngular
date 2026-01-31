@@ -1,0 +1,212 @@
+// ==========================================
+// 🌙 DARK MODE THEME
+// ==========================================
+
+@import 'variables';
+
+// Dark mode class applied to body
+body.dark-theme {
+  // Background & Surface
+  background-color: $bg-dark;
+  color: $text-primary-dark;
+
+  // CSS Variables for Dark Mode
+  --bg-primary: #{$bg-dark};
+  --bg-surface: #{$surface-dark};
+  --bg-surface-hover: #{$surface-hover-dark};
+  --bg-surface-elevated: #{$surface-elevated-dark};
+
+  --text-primary: #{$text-primary-dark};
+  --text-secondary: #{$text-secondary-dark};
+  --text-disabled: #{$text-disabled-dark};
+
+  --shadow-sm: #{$shadow-sm-dark};
+  --shadow-md: #{$shadow-md-dark};
+  --shadow-lg: #{$shadow-lg-dark};
+  --shadow-xl: #{$shadow-xl-dark};
+
+  --status-low: #{$status-low-dark};
+  --status-normal: #{$status-normal-dark};
+  --status-high: #{$status-high-dark};
+  --status-active: #{$status-active-dark};
+
+  // =====================================
+  // COMPONENT OVERRIDES
+  // =====================================
+
+  // Cards
+  .mat-mdc-card,
+  .task-card,
+  .team-card,
+  .project-card {
+    background-color: $surface-dark;
+    color: $text-primary-dark;
+    box-shadow: $shadow-md-dark;
+
+    &:hover {
+      background-color: $surface-hover-dark;
+      box-shadow: $shadow-lg-dark;
+    }
+  }
+
+  // Kanban Columns
+  .kanban-column {
+    background-color: $surface-dark;
+
+    .column-header {
+      background-color: $surface-elevated-dark;
+      color: $text-primary-dark;
+    }
+  }
+
+  // Header/Navbar
+  .app-header,
+  .navbar {
+    background-color: $surface-elevated-dark;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    box-shadow: $shadow-md-dark;
+  }
+
+  // Buttons
+  .mat-mdc-button,
+  .mat-mdc-raised-button {
+    &:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+      color: $text-primary-dark;
+    }
+  }
+
+  .mat-mdc-outlined-button {
+    border-color: rgba(255, 255, 255, 0.12);
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.04);
+    }
+  }
+
+  // Form Fields
+  .mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+      background-color: $surface-elevated-dark;
+    }
+
+    .mat-mdc-form-field-label {
+      color: $text-secondary-dark;
+    }
+  }
+
+  // Chips & Badges
+  .status-badge,
+  .mat-mdc-chip {
+    &.low-priority {
+      background-color: rgba($status-low-dark, 0.15);
+      color: $status-low-dark;
+    }
+
+    &.normal-priority {
+      background-color: rgba($status-normal-dark, 0.15);
+      color: $status-normal-dark;
+    }
+
+    &.high-priority {
+      background-color: rgba($status-high-dark, 0.15);
+      color: $status-high-dark;
+    }
+
+    &.active-status {
+      background-color: rgba($status-active-dark, 0.15);
+      color: $status-active-dark;
+    }
+  }
+
+  // Dialogs/Modals
+  .mat-mdc-dialog-container {
+    background-color: $surface-elevated-dark;
+    color: $text-primary-dark;
+  }
+
+  // Dividers
+  .mat-divider,
+  hr {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  // Lists
+  .mat-mdc-list-item {
+    &:hover {
+      background-color: $surface-hover-dark;
+    }
+  }
+
+  // Inputs
+  input,
+  textarea,
+  select {
+    background-color: $surface-elevated-dark;
+    color: $text-primary-dark;
+    border-color: rgba(255, 255, 255, 0.12);
+
+    &::placeholder {
+      color: $text-disabled-dark;
+    }
+
+    &:focus {
+      border-color: $primary-400;
+    }
+  }
+
+  // Tables
+  .mat-mdc-table {
+    background-color: $surface-dark;
+
+    .mat-mdc-header-row {
+      background-color: $surface-elevated-dark;
+    }
+
+    .mat-mdc-row:hover {
+      background-color: $surface-hover-dark;
+    }
+  }
+
+  // Scrollbar Styling (Webkit)
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $surface-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  // Empty States
+  .empty-state {
+    color: $text-secondary-dark;
+
+    .empty-icon {
+      opacity: 0.5;
+    }
+  }
+
+  // Links
+  a {
+    color: $primary-300;
+
+    &:hover {
+      color: $primary-200;
+    }
+  }
+
+  // Selection
+  ::selection {
+    background-color: rgba($primary-400, 0.3);
+    color: $text-primary-dark;
+  }
+}

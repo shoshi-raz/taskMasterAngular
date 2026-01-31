@@ -1,0 +1,18 @@
+<!-- ========================================== -->
+<!-- 🌓 THEME TOGGLE BUTTON -->
+<!-- ========================================== -->
+
+<button
+  mat-icon-button
+  class="theme-toggle-btn"
+  [matTooltip]="tooltipText"
+  matTooltipPosition="below"
+  (click)="toggleTheme()"
+  [attr.aria-label]="tooltipText"
+>
+  @if (isDarkMode) {
+    <mat-icon class="toggle-icon sun-icon">light_mode</mat-icon>
+  } @else {
+    <mat-icon class="toggle-icon moon-icon">dark_mode</mat-icon>
+  }
+</button>

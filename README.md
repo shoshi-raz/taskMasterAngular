@@ -1,27 +1,102 @@
-# TasksProject
+# 📋 TaskMaster - Team Task Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+A modern Angular 20 application for collaborative team task management, inspired by ClickUp.
 
-## Development server
+## ✨ Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Authentication**: User registration/login with JWT tokens
+- **Teams**: Create and manage teams with members
+- **Projects**: Organize work into projects within teams
+- **Task Board**: Kanban-style board for task management (Create, Update, Delete)
+- **Comments**: Add comments to tasks for team collaboration
+- **Material Design**: Modern UI with light/dark mode support
 
-## Code scaffolding
+## 🛠️ Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 20 (Standalone Components)
+- Angular Material Design
+- SCSS with CSS Variables
+- Reactive Forms
+- JWT Authentication
 
-## Build
+## 📱 Screens
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Auth**: Login/Register with email and password
+2. **Teams**: List all teams and create new ones
+3. **Projects**: View projects within selected team
+4. **Task Board**: Kanban board with task management
 
-## Running unit tests
+## 🚀 Quick Start
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+# Install dependencies
+npm install
 
-## Running end-to-end tests
+# Start development server
+ng serve
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Navigate to http://localhost:4200/
+```
 
-## Further help
+## 🔌 API Endpoints
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Auth
+- `POST /api/auth/register` - Create account
+- `POST /api/auth/login` - Login user
+
+### Teams (Protected)
+- `GET /api/teams` - Get user's teams
+- `POST /api/teams` - Create team
+- `POST /api/teams/:teamId/members` - Add member
+
+### Projects (Protected)
+- `GET /api/projects` - Get all projects
+- `POST /api/projects` - Create project
+
+### Tasks (Protected)
+- `GET /api/tasks` - Get tasks (query: ?projectId=<id>)
+- `POST /api/tasks` - Create task
+- `PATCH /api/tasks/:id` - Update task
+- `DELETE /api/tasks/:id` - Delete task
+
+### Comments (Protected)
+- `GET /api/comments` - Get task comments (query: ?taskId=<id>)
+- `POST /api/comments` - Add comment
+
+## 🔒 Security
+
+- JWT token-based authentication
+- Protected routes with auth guard
+- Bearer token authorization header
+- Token stored in localStorage
+
+## 📁 Structure
+
+```
+src/app/
+├── components/  (Auth, Teams, Projects, Tasks, Dialogs)
+├── services/    (Auth, Team, Project, Task)
+├── guards/      (Auth guard)
+└── interceptors/ (HTTP interceptor for tokens)
+```
+
+## 🎨 Styling
+
+- Material Design 3 components
+- SCSS variables system
+- Dark/Light theme support
+- Responsive design
+
+## 📝 Notes
+
+- Backend server required (Node.js)
+- CORS must be properly configured
+- API base URL configurable in environment files
+
+## 👨‍💻 Developer
+
+**Owner**: shoshi-raz | **Repo**: taskMasterAngular | **Branch**: main
+
+---
+
+**Last Updated**: January 2026 | **Version**: 1.0.0

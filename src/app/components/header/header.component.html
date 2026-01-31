@@ -1,26 +1,55 @@
-<mat-toolbar class="main-header">
-  <span class="logo" routerLink="/">TaskMaster</span>
-
-  <div class="nav-group">
-    @if (this.authService.isLoggedIn$ | async) {
-      <button mat-button routerLink="/tasks" routerLinkActive="active-link">My Tasks</button>
-      <button mat-button routerLink="/teams" routerLinkActive="active-link">Teams</button>
-    }
-  </div>
-
-  <span class="spacer"></span>
-
-  <div class="user-group">
-    @if (this.authService.isLoggedIn$ | async) {
-      <span class="user-name">
-        Hello, {{ (this.authService.currentUser$ | async)?.name }}
+<mat-toolbar class="app-header">
+  <div class="header-container">
+    <div class="header-left">
+      <span class="logo" routerLink="/">
+        <span class="logo-icon">✓</span>
+        <span class="logo-text">TaskMaster</span>
       </span>
-      <button mat-icon-button (click)="onLogout()" class="logout-btn">
-        <mat-icon>logout</mat-icon>
-      </button>
-    } @else {
-      <button mat-button routerLink="/login" routerLinkActive="active-link">Login</button>
-      <button mat-flat-button color="primary" routerLink="/register">Register</button>
-    }
+
+      <nav class="nav-group">
+        @if (this.authService.isLoggedIn$ | async) {
+        <button mat-button routerLink="/tasks" routerLinkActive="active-link" class="nav-btn">
+          <mat-icon class="nav-icon">task_alt</mat-icon>
+          <span>My Tasks</span>
+        </button>
+        <button mat-button routerLink="/teams" routerLinkActive="active-link" class="nav-btn">
+          <mat-icon class="nav-icon">groups</mat-icon>
+          <span>Teams</span>
+        </button>
+        }
+      </nav>
+    </div>
+
+    <div class="header-right">
+      @if (this.authService.isLoggedIn$ | async) {
+      <div class="user-info">
+        <div class="user-avatar">
+          {{ (this.authService.currentUser$ | async)?.name?.charAt(0) || 'U' }}
+        </div>
+        <span class="user-name">
+          Hello, {{ (this.authService.currentUser$ | async)?.name }}
+        </span>
+      </div>
+
+      <div class="header-actions">
+        <app-theme-toggle></app-theme-toggle>
+
+        <button mat-icon-button (click)="onLogout()" class="logout-btn" matTooltip="Logout">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+      } @else {
+      <app-theme-toggle></app-theme-toggle>
+
+      <div class="auth-buttons">
+        <button mat-button routerLink="/login" routerLinkActive="active-link" class="login-btn">
+          Login
+        </button>
+        <button mat-flat-button color="primary" routerLink="/register" class="register-btn">
+          Register
+        </button>
+      </div>
+      }
+    </div>
   </div>
 </mat-toolbar>

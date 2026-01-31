@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommentsService } from '../../../services/comments.service';
-import { TaskComment } from '../../../models/comment.model';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -27,7 +26,7 @@ import { AuthService } from '../../../services/auth.service';
     MatDividerModule
   ],
   templateUrl: './task-comments-dialog.component.html',
-  styleUrl: './task-comments-dialog.component.css'
+  styleUrl: './task-comments-dialog.component.scss'
 })
 export class TaskCommentsDialogComponent implements OnInit {
   protected commentsService = inject(CommentsService);

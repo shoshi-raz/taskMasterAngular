@@ -2,11 +2,13 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { ThemeToggleComponent } from '../UIcomponents/theme-toggle/theme-toggle.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
@@ -16,10 +18,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     RouterLink,
     RouterLinkActive,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    ThemeToggleComponent  
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   public authService = inject(AuthService);
@@ -29,6 +33,4 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
-
 }

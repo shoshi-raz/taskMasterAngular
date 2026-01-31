@@ -1,21 +1,24 @@
 <div class="header-nav-container">
   <nav class="breadcrumb-wrapper">
     @for (item of breadcrumbs(); track item.label; let last = $last) {
-      @if (item.url && !last) {
-        <a [routerLink]="item.url" class="breadcrumb-link">{{ item.label }}</a>
-      } @else {
-        <span class="breadcrumb-current">{{ item.label }}</span>
-      }
-      
-      @if (!last) {
-        <mat-icon class="separator">chevron_right</mat-icon>
-      }
+    @if (item.url && !last) {
+    <a [routerLink]="item.url" class="breadcrumb-link" >
+      {{ item.label }}
+    </a>
+    } @else {
+    <span class="breadcrumb-current">{{ item.label }}</span>
+    }
+
+    @if (!last) {
+    <mat-icon class="separator">chevron_right</mat-icon>
+    }
     }
   </nav>
 
   <div class="actions-spacer"></div>
 
-  <button mat-icon-button (click)="onRefresh()" [disabled]="isLoading()">
+  <button mat-icon-button (click)="onRefresh()" [disabled]="isLoading()" matTooltip="Refresh"
+    matTooltipPosition="above">
     <app-loading-icon [isLoading]="isLoading()"></app-loading-icon>
   </button>
 </div>

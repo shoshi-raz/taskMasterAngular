@@ -5,39 +5,39 @@ import { Team } from '../../../models/team.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-member-dialog',
   imports: [
-     MatDialogTitle, 
-     MatDialogContent, 
-     MatDialogActions,
-     ReactiveFormsModule,
-     MatFormFieldModule,
-     MatButtonModule,
-     MatInputModule
-
-     
-    ],
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule
+  ],
   templateUrl: './add-member-dialog.component.html',
-  styleUrl: './add-member-dialog.component.css',
+  styleUrl: './add-member-dialog.component.scss',
 })
 export class AddMemberDialogComponent {
-  private fb=inject(FormBuilder);
-  private dialogRef=inject(MatDialogRef<AddMemberDialogComponent>);
+  private fb = inject(FormBuilder);
+  private dialogRef = inject(MatDialogRef<AddMemberDialogComponent>);
 
-  protected data=inject<{team:Team}>(MAT_DIALOG_DATA)
+  protected data = inject<{ team: Team }>(MAT_DIALOG_DATA)
 
 
-  memberForm=this.fb.group({
-    userId:[null as number|null,Validators.required]
+  memberForm = this.fb.group({
+    userId: [null as number | null, Validators.required]
   });
 
-  onSubmit(){
-    if(this.memberForm.invalid)return;
+  onSubmit() {
+    if (this.memberForm.invalid) return;
     this.dialogRef.close(this.memberForm.value);
   }
-  OnCancel(){
+  OnCancel() {
     this.dialogRef.close();
   }
 

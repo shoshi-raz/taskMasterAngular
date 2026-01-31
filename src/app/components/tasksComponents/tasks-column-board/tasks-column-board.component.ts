@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Task, TaskPriority, TaskStatus } from '../../../models/task.model';
 
 @Component({
@@ -23,7 +23,7 @@ import { Task, TaskPriority, TaskStatus } from '../../../models/task.model';
     MatDialogModule
   ],
   templateUrl: './tasks-column-board.component.html',
-  styleUrl: './tasks-column-board.component.css',
+  styleUrl: './tasks-column-board.component.scss',
 })
 export class TasksColumnBoardComponent {
   title = input.required<string>();

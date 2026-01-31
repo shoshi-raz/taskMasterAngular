@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef,MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
@@ -12,11 +13,11 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
-
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './team-create-dialog.component.html',
-  styleUrl: './team-create-dialog.component.css',
+  styleUrl: './team-create-dialog.component.scss',
 })
 export class TeamCreateDialogComponent {
   teamName: string = '';

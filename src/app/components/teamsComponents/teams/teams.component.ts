@@ -31,7 +31,7 @@ import { PageNavigateComponent } from "../../page-navigate/page-navigate.compone
     PageNavigateComponent
 ],
   templateUrl: './teams.component.html',
-  styleUrl: './teams.component.css',
+  styleUrl: './teams.component.scss',
 })
 export class TeamsComponent {
   protected readonly teamsService = inject(TeamsService);
@@ -53,7 +53,7 @@ export class TeamsComponent {
 
   openCreateDialog() {
     const dialogRef = this.dialog.open(TeamCreateDialogComponent,
-      { width: '400px', disableClose: true });
+      { width: '450px', disableClose: true });
 
     dialogRef.afterClosed().subscribe(name => {
       if (name) {

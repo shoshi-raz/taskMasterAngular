@@ -11,7 +11,7 @@ import { LoadingIconComponent } from '../UIcomponents/loading-icon/loading-icon.
   selector: 'app-page-navigate',
   imports: [CommonModule, RouterModule, MatButtonModule, MatIconModule, LoadingIconComponent],
   templateUrl: './page-navigate.component.html',
-  styleUrl: './page-navigate.component.css',
+  styleUrl: './page-navigate.component.scss',
 })
 export class PageNavigateComponent {
 breadcrumbs = input.required<Breadcrumb[]>();

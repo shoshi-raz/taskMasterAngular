@@ -1,13 +1,9 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { TasksService } from '../../../services/tasks.service';
-import { LoadingIconComponent } from '../../UIcomponents/loading-icon/loading-icon.component';
-
 
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { TaskItemComponent } from '../task-item/task-item.component';
-import { TeamsService } from '../../../services/teams.service';
 import { TaskBoardComponent } from '../task-board/task-board.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -31,7 +27,7 @@ import { PageNavigateComponent } from "../../page-navigate/page-navigate.compone
     PageNavigateComponent
 ],
   templateUrl: './tasks.component.html',
-  styleUrl: './tasks.component.css',
+  styleUrl: './tasks.component.scss',
 })
 export class TasksComponent {
   protected tasksService = inject(TasksService)

@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TaskStatus } from '../../../models/task.model';
 import { ProjectsService } from '../../../services/projects.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -23,10 +24,11 @@ import { ProjectsService } from '../../../services/projects.service';
     MatSelectModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule
   ],
   templateUrl: './add-task-dialog.component.html',
-  styleUrl: './add-task-dialog.component.css',
+  styleUrl: './add-task-dialog.component.scss',
 })
 export class AddTaskDialogComponent {
   private fb = inject(FormBuilder);
