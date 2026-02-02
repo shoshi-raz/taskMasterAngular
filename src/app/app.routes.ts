@@ -15,8 +15,7 @@ export const routes: Routes = [
     { path: 'teams/:teamId/projects', component: ProjectsComponent, canActivate: [authGuard] },
     { path: 'teams/:teamId/projects/:projectId/board', component: TaskBoardComponent, canActivate: [authGuard] },
     { path: 'tasks', component: TasksComponent, canActivate: [authGuard] },
-
-
+    {path:'**',redirectTo:'tasks',pathMatch:'full'},
 
 ];
 

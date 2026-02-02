@@ -11,6 +11,5 @@ import { ThemeService } from './components/UIcomponents/theme-toggle/theme.servi
     styleUrl: './app.component.css'
 })
 export class AppComponent {
-  private themeService = inject(ThemeService);
-  ngOnInit() {}
+  
 }
